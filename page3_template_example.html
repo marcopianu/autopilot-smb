@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI HR Report – Content Page</title>
+    <title>Weekly Till · content (smart glass · more balls · more lines)</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             background: #dccbb8;
             display: flex;
@@ -16,6 +17,7 @@
             font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
             padding: 1rem;
         }
+
         .page {
             width: 640px;
             height: 950px;
@@ -28,7 +30,16 @@
             display: flex;
             flex-direction: column;
         }
-        .blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+
+        /* -------------------- 8 VOLUMETRIC 3D BALLS -------------------- */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            will-change: transform;
+        }
+        /* original three */
         .blob-1 {
             width: 420px; height: 420px;
             background: radial-gradient(circle at 36% 32%, #F0A07A 0%, #C4623A 46%, #7A2D10 100%);
@@ -47,49 +58,242 @@
             box-shadow: inset -10px -14px 35px rgba(0,0,0,0.14), 14px 20px 50px rgba(150,80,40,0.18);
             top: 15%; right: 2%;
         }
-        .arc-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        /* five new spheres */
+        .blob-4 {
+            width: 280px; height: 280px;
+            background: radial-gradient(circle at 30% 25%, #fae1c7 0%, #c27e54 50%, #6b3f1f 100%);
+            box-shadow: inset -18px -18px 45px #3b1e0b, 25px 30px 70px #954e1e;
+            bottom: 5%; left: -30px;
+        }
+        .blob-5 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle at 65% 70%, #fdebd0 0%, #b4623a 55%, #572811 100%);
+            box-shadow: inset 16px 16px 50px #271007, -20px -20px 70px #ac5a32;
+            top: 35%; right: -120px;
+        }
+        .blob-6 {
+            width: 190px; height: 190px;
+            background: radial-gradient(circle at 20% 30%, #fcf1e6 0%, #d6895a 48%, #8b4d27 100%);
+            box-shadow: inset -6px -8px 30px #381e0c, 15px 25px 60px #b45f30;
+            bottom: 40%; left: 10%;
+        }
+        .blob-7 {
+            width: 240px; height: 240px;
+            background: radial-gradient(circle at 75% 20%, #f3d6bb 0%, #c26d40 52%, #733d17 100%);
+            box-shadow: inset -10px -20px 40px #311507, 20px 15px 70px #a24e24;
+            top: 2%; left: 25%;
+        }
+        .blob-8 {
+            width: 160px; height: 160px;
+            background: radial-gradient(circle at 55% 55%, #ffeede 0%, #cb8d62 55%, #9b572b 100%);
+            box-shadow: inset -10px -10px 35px #4b200a, 18px 18px 55px #a65222;
+            bottom: 20%; right: 10%;
+        }
+
+        /* SVG LAYER — MUCH MORE LINES (three origins, extra strokes) */
+        .arc-svg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+
+        /* ---------- SMART GLASS CONTENT CARD (main panel) ---------- */
         .content-card {
-            position: relative; z-index: 2;
-            background: rgba(255, 250, 240, 0.85);
-            backdrop-filter: blur(3px);
-            border-radius: 28px;
+            position: relative;
+            z-index: 2;
+            background: rgba(250, 240, 225, 0.25);
+            backdrop-filter: blur(14px) brightness(1.25) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) brightness(1.25) saturate(160%);
+            border-radius: 32px;
             margin: 24px 22px 18px 22px;
             padding: 28px 24px 16px 24px;
-            flex: 1; display: flex; flex-direction: column;
-            box-shadow: 0 15px 30px -10px rgba(80, 40, 15, 0.2);
-            border: 1px solid rgba(255, 235, 210, 0.8);
+            flex: 1;
+            display: flex; flex-direction: column;
+            box-shadow: 0 18px 35px -10px rgba(70, 30, 5, 0.3);
+            border: 1px solid rgba(255, 235, 200, 0.45);
             overflow-y: auto;
+            color: #1f1208;
         }
+
         .content-card::-webkit-scrollbar { width: 6px; }
-        .content-card::-webkit-scrollbar-track { background: #f0e0d0; border-radius: 8px; }
-        .content-card::-webkit-scrollbar-thumb { background: #C4623A; border-radius: 8px; }
-        p.body { font-size: 13.5px; line-height: 1.68; color: #1c1c2e; font-weight: 400; margin-bottom: 16px; }
-        h2.section-heading { font-size: 24px; font-weight: 700; color: #111122; margin: 26px 0 14px; line-height: 1.2; }
-        .quote-card { border-radius: 10px; padding: 20px 20px; display: flex; align-items: flex-start; gap: 18px; margin: 20px 0 24px; }
-        .quote-card-1 { background: linear-gradient(140deg, #FDF5EE 0%, #F5E2CF 70%, #EDDCC8 100%); }
-        .quote-card-2 { background: linear-gradient(140deg, #F5E2CF 0%, #E8C4A0 60%, #DAB68B 100%); }
-        .quote-left { display: flex; flex-direction: column; gap: 9px; flex-shrink: 0; width: 154px; }
-        .person-box { background: #ffffff; border-radius: 8px; padding: 11px 13px 12px; display: flex; flex-direction: column; gap: 4px; }
-        .person-icon-row { display: flex; align-items: center; gap: 8px; }
-        .person-svg { width: 22px; height: 22px; flex-shrink: 0; }
-        .person-name { font-size: 12.5px; font-weight: 700; color: #111122; line-height: 1.25; white-space: nowrap; }
-        .person-title { font-size: 11px; font-weight: 400; color: #555566; line-height: 1.45; margin-top: 1px; }
-        .read-btn { background: #ffffff; border-radius: 8px; padding: 9px 13px; display: flex; align-items: center; gap: 9px; cursor: pointer; border: none; width: 100%; }
-        .read-btn-icon { width: 20px; height: 20px; flex-shrink: 0; color: #1a1a2e; }
-        .read-btn-text { font-family: 'Source Sans 3', sans-serif; font-size: 11.5px; font-weight: 600; color: #111122; line-height: 1.3; text-align: left; }
-        .quote-text { flex: 1; font-size: 14px; font-style: italic; font-weight: 400; color: #2C1A0E; line-height: 1.62; padding-top: 2px; }
-        .page-footer { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; padding: 8px 0 4px; border-top: 1px dashed #E8B890; }
+        .content-card::-webkit-scrollbar-track { background: #e6cfb5; border-radius: 8px; }
+        .content-card::-webkit-scrollbar-thumb { background: #b06238; border-radius: 8px; }
+
+        /* body text paragraphs – glass adaptive */
+        p.body {
+            font-size: 13.5px;
+            line-height: 1.68;
+            color: #2b1a0c;
+            font-weight: 400;
+            margin-bottom: 18px;
+            background: rgba(245, 225, 205, 0.2);
+            backdrop-filter: blur(5px) brightness(1.1);
+            -webkit-backdrop-filter: blur(5px) brightness(1.1);
+            border-radius: 0 20px 20px 0;
+            padding: 8px 16px 8px 12px;
+            border-left: 3px solid #c98a5c;
+            box-shadow: 0 4px 12px rgba(120, 60, 20, 0.1);
+        }
+
+        h2.section-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2f1a0b;
+            margin: 26px 0 14px;
+            line-height: 1.2;
+            text-shadow: 0 2px 5px #ffefd0;
+            background: rgba(235, 205, 175, 0.2);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 0 30px 30px 0;
+            display: inline-block;
+        }
+
+        /* quote cards – now with glass + original warmth */
+        .quote-card {
+            border-radius: 24px;
+            padding: 20px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin: 20px 0 24px;
+            background: rgba(250, 235, 215, 0.3);
+            backdrop-filter: blur(12px) brightness(1.2);
+            -webkit-backdrop-filter: blur(12px) brightness(1.2);
+            border: 1px solid rgba(230, 180, 130, 0.5);
+            box-shadow: 0 12px 25px -8px #86481e33;
+        }
+        /* subtle variation for second card */
+        .quote-card-2 {
+            background: rgba(245, 225, 200, 0.3);
+            backdrop-filter: blur(12px) brightness(1.15);
+            -webkit-backdrop-filter: blur(12px) brightness(1.15);
+        }
+
+        .quote-left {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            flex-shrink: 0;
+            width: 154px;
+        }
+
+        .person-box {
+            background: rgba(255, 250, 240, 0.35);
+            backdrop-filter: blur(8px) brightness(1.25);
+            -webkit-backdrop-filter: blur(8px) brightness(1.25);
+            border-radius: 12px;
+            padding: 11px 13px 12px;
+            display: flex; flex-direction: column; gap: 4px;
+            border: 1px solid rgba(255, 230, 190, 0.6);
+        }
+
+        .person-icon-row {
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .person-svg {
+            width: 22px; height: 22px; flex-shrink: 0;
+            stroke: #4f2c14; /* deep warm */
+            filter: drop-shadow(0 1px 2px #ffefc0);
+        }
+
+        .person-name {
+            font-size: 12.5px; font-weight: 700;
+            color: #2d1a0b; line-height: 1.25; white-space: nowrap;
+            text-shadow: 0 1px 3px #ffeac0;
+        }
+
+        .person-title {
+            font-size: 11px; font-weight: 400;
+            color: #4d311b; line-height: 1.45; margin-top: 1px;
+        }
+
+        .read-btn {
+            background: rgba(255, 245, 225, 0.35);
+            backdrop-filter: blur(8px) brightness(1.3);
+            -webkit-backdrop-filter: blur(8px) brightness(1.3);
+            border-radius: 12px;
+            padding: 9px 13px;
+            display: flex; align-items: center; gap: 9px;
+            cursor: pointer; border: 1px solid rgba(220, 170, 120, 0.6);
+            width: 100%;
+            transition: 0.15s;
+        }
+        .read-btn:hover {
+            background: rgba(255, 235, 205, 0.5);
+            backdrop-filter: blur(8px) brightness(1.35);
+        }
+
+        .read-btn-icon {
+            width: 20px; height: 20px; flex-shrink: 0;
+            stroke: #3d2412;
+        }
+        .read-btn-text {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 11.5px; font-weight: 600;
+            color: #2f1a0b; line-height: 1.3; text-align: left;
+            text-shadow: 0 1px 3px #ffefd0;
+        }
+
+        .quote-text {
+            flex: 1;
+            font-size: 14px; font-style: italic; font-weight: 400;
+            color: #2b180b; line-height: 1.62;
+            padding-top: 2px;
+            background: rgba(255, 245, 225, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 16px;
+            padding: 12px 16px;
+            border: 1px solid rgba(230, 185, 135, 0.4);
+        }
+
+        /* footer */
+        .page-footer {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0 4px;
+            border-top: 1px dashed rgba(210, 140, 90, 0.7);
+            background: rgba(245, 225, 200, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 0 0 20px 20px;
+            padding: 10px 16px;
+        }
+
         .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .footer-triangle { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #C4623A; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(140,70,20,0.2)); }
-        .footer-brand { font-size: 16px; font-weight: 400; color: #3D1A08; letter-spacing: 0.01em; text-transform: lowercase; }
-        .footer-page { font-size: 14px; font-weight: 400; color: #8B5A3A; }
+        .footer-triangle {
+            width: 0; height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 13px solid #b45a30;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(140,70,20,0.3));
+        }
+        .footer-brand { font-size: 16px; font-weight: 400; color: #2d180a; letter-spacing: 0.01em; text-transform: lowercase; text-shadow: 0 1px 4px #ffeac0; }
+        .footer-page { font-size: 14px; font-weight: 400; color: #633f20; background: rgba(255,235,200,0.3); padding: 2px 10px; border-radius: 30px; backdrop-filter: blur(4px); }
     </style>
 </head>
 <body>
     <div class="page">
+        <!-- 8 SPHERES -->
         <div class="blob blob-1" aria-hidden="true"></div>
         <div class="blob blob-2" aria-hidden="true"></div>
         <div class="blob blob-3" aria-hidden="true"></div>
+        <div class="blob blob-4" aria-hidden="true"></div>
+        <div class="blob blob-5" aria-hidden="true"></div>
+        <div class="blob blob-6" aria-hidden="true"></div>
+        <div class="blob blob-7" aria-hidden="true"></div>
+        <div class="blob blob-8" aria-hidden="true"></div>
+
+        <!-- LINES, LINES, LINES (dense) -->
         <svg class="arc-svg" viewBox="0 0 640 950" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="warmArcGradient" x1="15%" y1="90%" x2="85%" y2="10%" gradientUnits="userSpaceOnUse">
@@ -97,93 +301,111 @@
                     <stop offset="45%" stop-color="#C4623A"/>
                     <stop offset="100%" stop-color="#9C4A28"/>
                 </linearGradient>
+                <linearGradient id="softOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#edb58b" />
+                    <stop offset="100%" stop-color="#a84f25" />
+                </linearGradient>
                 <filter id="warmGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <filter id="warmSolidGlow" x="-10%" y="-10%" width="120%" height="120%">
-                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feGaussianBlur stdDeviation="6" result="blur" />
                     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
                 <clipPath id="pageClip"><rect width="640" height="950"/></clipPath>
             </defs>
-            <g clip-path="url(#pageClip)">
-                <circle cx="720" cy="1020" r="685" fill="none" stroke="#B85830" stroke-width="11" stroke-linecap="round" filter="url(#warmSolidGlow)" opacity="0.8"/>
-                <circle cx="720" cy="1020" r="576" fill="none" stroke="url(#warmArcGradient)" stroke-width="10" stroke-linecap="round" filter="url(#warmGlow)" opacity="1"/>
-                <circle cx="720" cy="1020" r="472" fill="none" stroke="#E8B890" stroke-width="3" stroke-dasharray="4 11" stroke-linecap="round" opacity="0.75"/>
-                <circle cx="720" cy="1020" r="378" fill="none" stroke="#F0A07A" stroke-width="2" stroke-dasharray="3 12" stroke-linecap="round" opacity="0.7"/>
-                <circle cx="720" cy="1020" r="290" fill="none" stroke="#FAF0E4" stroke-width="1.5" stroke-dasharray="1.5 15" stroke-linecap="round" opacity="0.5"/>
-                <circle cx="720" cy="1020" r="215" fill="none" stroke="#C4623A" stroke-width="1.8" stroke-dasharray="2 18" stroke-linecap="round" opacity="0.35"/>
-                <circle cx="720" cy="1020" r="500" fill="none" stroke="#E8C4A0" stroke-width="2.2" stroke-dasharray="3 24" stroke-linecap="round" opacity="0.4"/>
+            <g clip-path="url(#pageClip)" opacity="0.9">
+
+                <!-- ***** BOTTOM RIGHT ORIGIN (dense circles) ***** -->
+                <circle cx="720" cy="1020" r="685" fill="none" stroke="#B85830" stroke-width="11" stroke-linecap="round" filter="url(#warmGlow)" opacity="0.5" />
+                <circle cx="720" cy="1020" r="576" fill="none" stroke="url(#warmArcGradient)" stroke-width="10" stroke-linecap="round" opacity="0.8" />
+                <circle cx="720" cy="1020" r="472" fill="none" stroke="#E8B890" stroke-width="3" stroke-dasharray="4 11" opacity="0.7" />
+                <circle cx="720" cy="1020" r="378" fill="none" stroke="#F0A07A" stroke-width="2" stroke-dasharray="3 12" opacity="0.65" />
+                <circle cx="720" cy="1020" r="290" fill="none" stroke="#FAF0E4" stroke-width="1.5" stroke-dasharray="1.5 15" opacity="0.5" />
+                <circle cx="720" cy="1020" r="215" fill="none" stroke="#C4623A" stroke-width="1.8" stroke-dasharray="2 18" opacity="0.4" />
+                <circle cx="720" cy="1020" r="500" fill="none" stroke="#E8C4A0" stroke-width="2.2" stroke-dasharray="3 24" opacity="0.5" />
+                <!-- extra radii -->
+                <circle cx="720" cy="1020" r="640" fill="none" stroke="#ca7b4b" stroke-width="2.5" stroke-dasharray="8 20" opacity="0.45" />
+                <circle cx="720" cy="1020" r="330" fill="none" stroke="#dc9a6b" stroke-width="4" stroke-dasharray="2 7" opacity="0.6" />
+
+                <!-- ***** TOP LEFT ORIGIN ***** -->
+                <circle cx="-120" cy="-80" r="450" fill="none" stroke="#cf8555" stroke-width="3" stroke-dasharray="7 14" opacity="0.5" />
+                <circle cx="-120" cy="-80" r="560" fill="none" stroke="#b45e2e" stroke-width="8" stroke-linecap="round" opacity="0.3" />
+                <circle cx="-120" cy="-80" r="360" fill="none" stroke="#ecb187" stroke-width="4" stroke-dasharray="2 12" opacity="0.6" />
+                <circle cx="-120" cy="-80" r="270" fill="none" stroke="#faefe3" stroke-width="2.5" stroke-dasharray="1 10" opacity="0.5" />
+                <circle cx="-120" cy="-80" r="190" fill="none" stroke="#cfa478" stroke-width="2" stroke-dasharray="3 18" opacity="0.7" />
+                <circle cx="-120" cy="-80" r="620" fill="none" stroke="#b26130" stroke-width="3" stroke-dasharray="10 22" opacity="0.3" />
+
+                <!-- ***** THIRD ORIGIN (right mid) ***** -->
+                <circle cx="800" cy="400" r="550" fill="none" stroke="#e2a77a" stroke-width="3" stroke-dasharray="6 15" opacity="0.5" />
+                <circle cx="800" cy="400" r="450" fill="none" stroke="#c17444" stroke-width="5" stroke-dasharray="2 20" opacity="0.45" />
+                <circle cx="800" cy="400" r="330" fill="none" stroke="#fadcc0" stroke-width="2" stroke-dasharray="1 30" opacity="0.55" />
+                <circle cx="800" cy="400" r="210" fill="none" stroke="#a5542c" stroke-width="1.5" stroke-dasharray="4 12" opacity="0.65" />
+
+                <!-- ***** STRAIGHT LINES (radiating) – many ***** -->
+                <line x1="-50" y1="200" x2="500" y2="950" stroke="#bb6a3f" stroke-width="1.5" stroke-dasharray="6 9" opacity="0.5"/>
+                <line x1="0" y1="0" x2="640" y2="950" stroke="#c98555" stroke-width="2" stroke-dasharray="5 10" opacity="0.5"/>
+                <line x1="640" y1="0" x2="200" y2="950" stroke="#ac5c34" stroke-width="2.2" stroke-dasharray="12 8" opacity="0.45"/>
+                <line x1="640" y1="300" x2="-50" y2="800" stroke="#e3af84" stroke-width="3" stroke-dasharray="3 12" opacity="0.4"/>
+                <line x1="200" y1="-50" x2="500" y2="1000" stroke="#d69464" stroke-width="2" stroke-dasharray="4 16" opacity="0.5"/>
+                <line x1="500" y1="-30" x2="100" y2="950" stroke="#b26638" stroke-width="2.5" stroke-dasharray="7 11" opacity="0.6"/>
+                <line x1="-30" y1="600" x2="670" y2="200" stroke="#d68f59" stroke-width="2" stroke-dasharray="3 18" opacity="0.5"/>
+                <line x1="100" y1="800" x2="550" y2="-50" stroke="#b57a4e" stroke-width="1.8" stroke-dasharray="8 14" opacity="0.5"/>
+
+                <!-- ***** WAVY ORGANIC PATHS ***** -->
+                <path d="M100,200 Q250,100 400,250 T600,300" stroke="#ce8f61" fill="none" stroke-width="2.5" stroke-dasharray="5 10" opacity="0.5"/>
+                <path d="M50,600 Q200,500 350,700 T550,750" stroke="#ba7344" fill="none" stroke-width="2" stroke-dasharray="3 12" opacity="0.5"/>
+                <path d="M180,400 Q300,300 420,450 T580,500" stroke="#dbaa7c" fill="none" stroke-width="3" stroke-dasharray="6 14" opacity="0.5"/>
             </g>
         </svg>
 
+        <!-- SMART GLASS CONTENT (all placeholders exactly as required) -->
         <div class="content-card">
 
-            <!-- ~50 words: introduce the pain point situation from COL$D + reasoning -->
             <p class="body">[[P3_P1]]</p>
 
-            <!-- Quote Card 1: invented persona from the Example industry (COL$E) -->
-            <div class="quote-card quote-card-1">
+            <!-- Quote Card 1 -->
+            <div class="quote-card">
                 <div class="quote-left">
                     <div class="person-box">
                         <div class="person-icon-row">
                             <svg class="person-svg" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="11" cy="7" r="4" stroke="#1a1a2e" stroke-width="1.3"/>
-                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#1a1a2e" stroke-width="1.3" stroke-linecap="round"/>
+                                <circle cx="11" cy="7" r="4" stroke="currentColor" stroke-width="1.3"/>
+                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                             </svg>
-                            <!-- ~2 words: realistic first + last name -->
                             <span class="person-name">[[P3_Q1_NAME]]</span>
                         </div>
-                        <!-- ~5 words: job title + company type matching COL$E example -->
                         <div class="person-title">[[P3_Q1_TITLE]]</div>
                     </div>
                 </div>
-                <!-- ~45 words: insight quote grounded in the COL$E example, first-person voice -->
                 <p class="quote-text">[[P3_Q1_TEXT]]</p>
             </div>
 
-            <!-- ~55 words: expand on the COL$E example with strategic reasoning -->
             <p class="body">[[P3_P2]]</p>
-
-            <!-- ~3-5 words: punchy section heading naming the core barrier or theme -->
             <h2 class="section-heading">[[P3_HEADING]]</h2>
-
-            <!-- ~40 words: COL$E + COL$F stack angle, weave in a plausible % stat -->
             <p class="body">[[P3_P3]]</p>
-
-            <!-- ~40 words: adoption gap, reasoning on why most businesses stall here -->
             <p class="body">[[P3_P4]]</p>
-
-            <!-- ~30 words: closing tension sentence — what's at stake if nothing changes -->
             <p class="body">[[P3_P5]]</p>
 
-            <!-- Quote Card 2: second persona, CTO/ops level, COL$F stack perspective -->
+            <!-- Quote Card 2 -->
             <div class="quote-card quote-card-2">
                 <div class="quote-left">
                     <div class="person-box">
                         <div class="person-icon-row">
                             <svg class="person-svg" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="11" cy="7" r="4" stroke="#1a1a2e" stroke-width="1.3"/>
-                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#1a1a2e" stroke-width="1.3" stroke-linecap="round"/>
+                                <circle cx="11" cy="7" r="4" stroke="currentColor" stroke-width="1.3"/>
+                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                             </svg>
-                            <!-- ~2 words: second realistic name -->
                             <span class="person-name">[[P3_Q2_NAME]]</span>
                         </div>
-                        <!-- ~5 words: senior ops/tech title matching COL$F stack world -->
                         <div class="person-title">[[P3_Q2_TITLE]]</div>
                     </div>
                     <button class="read-btn">
                         <svg class="read-btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3.5" y="1.5" width="10" height="14" rx="1.2" stroke="#1a1a2e" stroke-width="1.2"/>
-                            <path d="M6 5.5h5M6 8h5M6 10.5h3" stroke="#1a1a2e" stroke-width="1.2" stroke-linecap="round"/>
-                            <path d="M13.5 10l3.5 2.5-3.5 2.5" stroke="#1a1a2e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="3.5" y="1.5" width="10" height="14" rx="1.2" stroke="currentColor" stroke-width="1.2"/>
+                            <path d="M6 5.5h5M6 8h5M6 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M13.5 10l3.5 2.5-3.5 2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <!-- max 4 words: button CTA text -->
                         <span class="read-btn-text">[[P3_BTN_TEXT]]</span>
                     </button>
                 </div>
-                <!-- ~45 words: strategic quote on building the right stack, forward-looking tone -->
                 <p class="quote-text">[[P3_Q2_TEXT]]</p>
             </div>
 
