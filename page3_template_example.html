@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI HR Report – Content Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #dccbb8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+            padding: 1rem;
+        }
+        .page {
+            width: 640px;
+            height: 950px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(150deg, #FDF5EE 0%, #F5E2CF 50%, #EDDCC8 100%);
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(90, 40, 15, 0.3);
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+        .blob-1 {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle at 36% 32%, #F0A07A 0%, #C4623A 46%, #7A2D10 100%);
+            box-shadow: inset -18px -22px 55px rgba(0,0,0,0.22), 28px 36px 90px rgba(100,38,12,0.22);
+            top: -130px; left: -130px;
+        }
+        .blob-2 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle at 38% 34%, #E8C4A0 0%, #B85830 48%, #6E2810 100%);
+            box-shadow: inset -14px -18px 45px rgba(0,0,0,0.2), 20px 28px 70px rgba(90,34,10,0.2);
+            bottom: -90px; right: -90px;
+        }
+        .blob-3 {
+            width: 200px; height: 200px;
+            background: radial-gradient(circle at 40% 35%, #FAF0E4 0%, #E8B890 46%, #C08060 100%);
+            box-shadow: inset -10px -14px 35px rgba(0,0,0,0.14), 14px 20px 50px rgba(150,80,40,0.18);
+            top: 15%; right: 2%;
+        }
+        .arc-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .content-card {
+            position: relative; z-index: 2;
+            background: rgba(255, 250, 240, 0.85);
+            backdrop-filter: blur(3px);
+            border-radius: 28px;
+            margin: 24px 22px 18px 22px;
+            padding: 28px 24px 16px 24px;
+            flex: 1; display: flex; flex-direction: column;
+            box-shadow: 0 15px 30px -10px rgba(80, 40, 15, 0.2);
+            border: 1px solid rgba(255, 235, 210, 0.8);
+            overflow-y: auto;
+        }
+        .content-card::-webkit-scrollbar { width: 6px; }
+        .content-card::-webkit-scrollbar-track { background: #f0e0d0; border-radius: 8px; }
+        .content-card::-webkit-scrollbar-thumb { background: #C4623A; border-radius: 8px; }
+        p.body { font-size: 13.5px; line-height: 1.68; color: #1c1c2e; font-weight: 400; margin-bottom: 16px; }
+        h2.section-heading { font-size: 24px; font-weight: 700; color: #111122; margin: 26px 0 14px; line-height: 1.2; }
+        .quote-card { border-radius: 10px; padding: 20px 20px; display: flex; align-items: flex-start; gap: 18px; margin: 20px 0 24px; }
+        .quote-card-1 { background: linear-gradient(140deg, #FDF5EE 0%, #F5E2CF 70%, #EDDCC8 100%); }
+        .quote-card-2 { background: linear-gradient(140deg, #F5E2CF 0%, #E8C4A0 60%, #DAB68B 100%); }
+        .quote-left { display: flex; flex-direction: column; gap: 9px; flex-shrink: 0; width: 154px; }
+        .person-box { background: #ffffff; border-radius: 8px; padding: 11px 13px 12px; display: flex; flex-direction: column; gap: 4px; }
+        .person-icon-row { display: flex; align-items: center; gap: 8px; }
+        .person-svg { width: 22px; height: 22px; flex-shrink: 0; }
+        .person-name { font-size: 12.5px; font-weight: 700; color: #111122; line-height: 1.25; white-space: nowrap; }
+        .person-title { font-size: 11px; font-weight: 400; color: #555566; line-height: 1.45; margin-top: 1px; }
+        .read-btn { background: #ffffff; border-radius: 8px; padding: 9px 13px; display: flex; align-items: center; gap: 9px; cursor: pointer; border: none; width: 100%; }
+        .read-btn-icon { width: 20px; height: 20px; flex-shrink: 0; color: #1a1a2e; }
+        .read-btn-text { font-family: 'Source Sans 3', sans-serif; font-size: 11.5px; font-weight: 600; color: #111122; line-height: 1.3; text-align: left; }
+        .quote-text { flex: 1; font-size: 14px; font-style: italic; font-weight: 400; color: #2C1A0E; line-height: 1.62; padding-top: 2px; }
+        .page-footer { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; padding: 8px 0 4px; border-top: 1px dashed #E8B890; }
+        .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .footer-triangle { width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 13px solid #C4623A; flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(140,70,20,0.2)); }
+        .footer-brand { font-size: 16px; font-weight: 400; color: #3D1A08; letter-spacing: 0.01em; text-transform: lowercase; }
+        .footer-page { font-size: 14px; font-weight: 400; color: #8B5A3A; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="blob blob-1" aria-hidden="true"></div>
+        <div class="blob blob-2" aria-hidden="true"></div>
+        <div class="blob blob-3" aria-hidden="true"></div>
+        <svg class="arc-svg" viewBox="0 0 640 950" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="warmArcGradient" x1="15%" y1="90%" x2="85%" y2="10%" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#F0A07A"/>
+                    <stop offset="45%" stop-color="#C4623A"/>
+                    <stop offset="100%" stop-color="#9C4A28"/>
+                </linearGradient>
+                <filter id="warmGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="6" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <filter id="warmSolidGlow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <clipPath id="pageClip"><rect width="640" height="950"/></clipPath>
+            </defs>
+            <g clip-path="url(#pageClip)">
+                <circle cx="720" cy="1020" r="685" fill="none" stroke="#B85830" stroke-width="11" stroke-linecap="round" filter="url(#warmSolidGlow)" opacity="0.8"/>
+                <circle cx="720" cy="1020" r="576" fill="none" stroke="url(#warmArcGradient)" stroke-width="10" stroke-linecap="round" filter="url(#warmGlow)" opacity="1"/>
+                <circle cx="720" cy="1020" r="472" fill="none" stroke="#E8B890" stroke-width="3" stroke-dasharray="4 11" stroke-linecap="round" opacity="0.75"/>
+                <circle cx="720" cy="1020" r="378" fill="none" stroke="#F0A07A" stroke-width="2" stroke-dasharray="3 12" stroke-linecap="round" opacity="0.7"/>
+                <circle cx="720" cy="1020" r="290" fill="none" stroke="#FAF0E4" stroke-width="1.5" stroke-dasharray="1.5 15" stroke-linecap="round" opacity="0.5"/>
+                <circle cx="720" cy="1020" r="215" fill="none" stroke="#C4623A" stroke-width="1.8" stroke-dasharray="2 18" stroke-linecap="round" opacity="0.35"/>
+                <circle cx="720" cy="1020" r="500" fill="none" stroke="#E8C4A0" stroke-width="2.2" stroke-dasharray="3 24" stroke-linecap="round" opacity="0.4"/>
+            </g>
+        </svg>
+
+        <div class="content-card">
+
+            <!-- ~50 words: introduce the pain point situation from COL$D + reasoning -->
+            <p class="body">{{P3_P1}}</p>
+
+            <!-- Quote Card 1: invented persona from the Example industry (COL$E) -->
+            <div class="quote-card quote-card-1">
+                <div class="quote-left">
+                    <div class="person-box">
+                        <div class="person-icon-row">
+                            <svg class="person-svg" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="7" r="4" stroke="#1a1a2e" stroke-width="1.3"/>
+                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#1a1a2e" stroke-width="1.3" stroke-linecap="round"/>
+                            </svg>
+                            <!-- ~2 words: realistic first + last name -->
+                            <span class="person-name">{{P3_Q1_NAME}}</span>
+                        </div>
+                        <!-- ~5 words: job title + company type matching COL$E example -->
+                        <div class="person-title">{{P3_Q1_TITLE}}</div>
+                    </div>
+                </div>
+                <!-- ~45 words: insight quote grounded in the COL$E example, first-person voice -->
+                <p class="quote-text">{{P3_Q1_TEXT}}</p>
+            </div>
+
+            <!-- ~55 words: expand on the COL$E example with strategic reasoning -->
+            <p class="body">{{P3_P2}}</p>
+
+            <!-- ~3-5 words: punchy section heading naming the core barrier or theme -->
+            <h2 class="section-heading">{{P3_HEADING}}</h2>
+
+            <!-- ~40 words: COL$E + COL$F stack angle, weave in a plausible % stat -->
+            <p class="body">{{P3_P3}}</p>
+
+            <!-- ~40 words: adoption gap, reasoning on why most businesses stall here -->
+            <p class="body">{{P3_P4}}</p>
+
+            <!-- ~30 words: closing tension sentence — what's at stake if nothing changes -->
+            <p class="body">{{P3_P5}}</p>
+
+            <!-- Quote Card 2: second persona, CTO/ops level, COL$F stack perspective -->
+            <div class="quote-card quote-card-2">
+                <div class="quote-left">
+                    <div class="person-box">
+                        <div class="person-icon-row">
+                            <svg class="person-svg" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="7" r="4" stroke="#1a1a2e" stroke-width="1.3"/>
+                                <path d="M2.5 20c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5" stroke="#1a1a2e" stroke-width="1.3" stroke-linecap="round"/>
+                            </svg>
+                            <!-- ~2 words: second realistic name -->
+                            <span class="person-name">{{P3_Q2_NAME}}</span>
+                        </div>
+                        <!-- ~5 words: senior ops/tech title matching COL$F stack world -->
+                        <div class="person-title">{{P3_Q2_TITLE}}</div>
+                    </div>
+                    <button class="read-btn">
+                        <svg class="read-btn-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3.5" y="1.5" width="10" height="14" rx="1.2" stroke="#1a1a2e" stroke-width="1.2"/>
+                            <path d="M6 5.5h5M6 8h5M6 10.5h3" stroke="#1a1a2e" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M13.5 10l3.5 2.5-3.5 2.5" stroke="#1a1a2e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <!-- max 4 words: button CTA text -->
+                        <span class="read-btn-text">{{P3_BTN_TEXT}}</span>
+                    </button>
+                </div>
+                <!-- ~45 words: strategic quote on building the right stack, forward-looking tone -->
+                <p class="quote-text">{{P3_Q2_TEXT}}</p>
+            </div>
+
+            <div class="page-footer">
+                <div class="footer-logo">
+                    <div class="footer-triangle"></div>
+                    <span class="footer-brand">weekly till</span>
+                </div>
+                <span class="footer-page">3</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
