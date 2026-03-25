@@ -218,7 +218,6 @@
 </head>
 <body>
     <div class="page">
-        <!-- 8 SPHERES -->
         <div class="blob blob-1" aria-hidden="true"></div>
         <div class="blob blob-2" aria-hidden="true"></div>
         <div class="blob blob-3" aria-hidden="true"></div>
@@ -228,7 +227,6 @@
         <div class="blob blob-7" aria-hidden="true"></div>
         <div class="blob blob-8" aria-hidden="true"></div>
 
-        <!-- LINES LAYER (static) -->
         <svg class="arc-svg" viewBox="0 0 640 950" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="warmArcGradient" x1="15%" y1="90%" x2="85%" y2="10%" gradientUnits="userSpaceOnUse">
@@ -243,7 +241,6 @@
                 <clipPath id="pageClip"><rect width="640" height="950"/></clipPath>
             </defs>
             <g clip-path="url(#pageClip)" opacity="0.9">
-                <!-- bottom right origin -->
                 <circle cx="720" cy="1020" r="685" fill="none" stroke="#B85830" stroke-width="11" stroke-linecap="round" filter="url(#warmGlow)" opacity="0.5" />
                 <circle cx="720" cy="1020" r="576" fill="none" stroke="url(#warmArcGradient)" stroke-width="10" stroke-linecap="round" opacity="0.8" />
                 <circle cx="720" cy="1020" r="472" fill="none" stroke="#E8B890" stroke-width="3" stroke-dasharray="4 11" opacity="0.7" />
@@ -253,19 +250,16 @@
                 <circle cx="720" cy="1020" r="500" fill="none" stroke="#E8C4A0" stroke-width="2.2" stroke-dasharray="3 24" opacity="0.5" />
                 <circle cx="720" cy="1020" r="640" fill="none" stroke="#ca7b4b" stroke-width="2.5" stroke-dasharray="8 20" opacity="0.45" />
                 <circle cx="720" cy="1020" r="330" fill="none" stroke="#dc9a6b" stroke-width="4" stroke-dasharray="2 7" opacity="0.6" />
-                <!-- top left origin -->
                 <circle cx="-120" cy="-80" r="450" fill="none" stroke="#cf8555" stroke-width="3" stroke-dasharray="7 14" opacity="0.5" />
                 <circle cx="-120" cy="-80" r="560" fill="none" stroke="#b45e2e" stroke-width="8" stroke-linecap="round" opacity="0.3" />
                 <circle cx="-120" cy="-80" r="360" fill="none" stroke="#ecb187" stroke-width="4" stroke-dasharray="2 12" opacity="0.6" />
                 <circle cx="-120" cy="-80" r="270" fill="none" stroke="#faefe3" stroke-width="2.5" stroke-dasharray="1 10" opacity="0.5" />
                 <circle cx="-120" cy="-80" r="190" fill="none" stroke="#cfa478" stroke-width="2" stroke-dasharray="3 18" opacity="0.7" />
                 <circle cx="-120" cy="-80" r="620" fill="none" stroke="#b26130" stroke-width="3" stroke-dasharray="10 22" opacity="0.3" />
-                <!-- right mid origin -->
                 <circle cx="800" cy="400" r="550" fill="none" stroke="#e2a77a" stroke-width="3" stroke-dasharray="6 15" opacity="0.5" />
                 <circle cx="800" cy="400" r="450" fill="none" stroke="#c17444" stroke-width="5" stroke-dasharray="2 20" opacity="0.45" />
                 <circle cx="800" cy="400" r="330" fill="none" stroke="#fadcc0" stroke-width="2" stroke-dasharray="1 30" opacity="0.55" />
                 <circle cx="800" cy="400" r="210" fill="none" stroke="#a5542c" stroke-width="1.5" stroke-dasharray="4 12" opacity="0.65" />
-                <!-- straight lines -->
                 <line x1="-50" y1="200" x2="500" y2="950" stroke="#bb6a3f" stroke-width="1.5" stroke-dasharray="6 9" opacity="0.5"/>
                 <line x1="0" y1="0" x2="640" y2="950" stroke="#c98555" stroke-width="2" stroke-dasharray="5 10" opacity="0.5"/>
                 <line x1="640" y1="0" x2="200" y2="950" stroke="#ac5c34" stroke-width="2.2" stroke-dasharray="12 8" opacity="0.45"/>
@@ -274,22 +268,17 @@
                 <line x1="500" y1="-30" x2="100" y2="950" stroke="#b26638" stroke-width="2.5" stroke-dasharray="7 11" opacity="0.6"/>
                 <line x1="-30" y1="600" x2="670" y2="200" stroke="#d68f59" stroke-width="2" stroke-dasharray="3 18" opacity="0.5"/>
                 <line x1="100" y1="800" x2="550" y2="-50" stroke="#b57a4e" stroke-width="1.8" stroke-dasharray="8 14" opacity="0.5"/>
-                <!-- wavy paths -->
                 <path d="M100,200 Q250,100 400,250 T600,300" stroke="#ce8f61" fill="none" stroke-width="2.5" stroke-dasharray="5 10" opacity="0.5"/>
                 <path d="M50,600 Q200,500 350,700 T550,750" stroke="#ba7344" fill="none" stroke-width="2" stroke-dasharray="3 12" opacity="0.5"/>
                 <path d="M180,400 Q300,300 420,450 T580,500" stroke="#dbaa7c" fill="none" stroke-width="3" stroke-dasharray="6 14" opacity="0.5"/>
             </g>
         </svg>
 
-        <!-- CONTENT CARD WITH PLACEHOLDERS -->
         <div class="content-card">
-            <!-- Heading -->
             <h2 class="heading">[[P4_HEADING]]</h2>
             <hr class="rule"/>
-            <!-- First question -->
             <p class="q-line"><strong>Question:</strong> [[P4_Q1]]</p>
 
-            <!-- CHART 1 — Horizontal bars -->
             <div class="chart-wrap">
                 <svg viewBox="0 0 548 246" xmlns="http://www.w3.org/2000/svg" overflow="visible">
                     <defs>
@@ -300,7 +289,6 @@
                             .dt { font-size: 10.5px; fill: #2c1e12; }
                         </style>
                     </defs>
-                    <!-- Bar 1 -->
                     <rect x="295" y="18" width="70" height="30" rx="2" fill="#C4623A"/>
                     <text class="sf"><tspan x="306" y="38" class="bn">[[P4_H1_NUM]]</tspan><tspan class="bp" dy="-6">%</tspan></text>
                     <rect x="374" y="26" width="8" height="8" fill="#C4623A"/>
@@ -310,7 +298,6 @@
                         <tspan x="386" dy="13">[[P4_H1_DESC3]]</tspan>
                     </text>
 
-                    <!-- Bar 2 -->
                     <rect x="15" y="64" width="265" height="30" rx="2" fill="#B85830"/>
                     <text class="sf"><tspan x="25" y="84" class="bn">[[P4_H2_NUM]]</tspan><tspan class="bp" dy="-6">%</tspan></text>
                     <rect x="288" y="72" width="8" height="8" fill="#B85830"/>
@@ -320,7 +307,6 @@
                         <tspan x="300" dy="13">[[P4_H2_DESC3]]</tspan>
                     </text>
 
-                    <!-- Bar 3 -->
                     <rect x="15" y="104" width="280" height="30" rx="2" fill="#A24E24"/>
                     <text class="sf"><tspan x="25" y="124" class="bn">[[P4_H3_NUM]]</tspan><tspan class="bp" dy="-6">%</tspan></text>
                     <rect x="303" y="112" width="8" height="8" fill="#A24E24"/>
@@ -330,7 +316,6 @@
                         <tspan x="315" dy="13">[[P4_H3_DESC3]]</tspan>
                     </text>
 
-                    <!-- Bar 4 -->
                     <rect x="15" y="144" width="109" height="30" rx="2" fill="#7A2D10"/>
                     <text class="sf"><tspan x="25" y="164" class="bn">[[P4_H4_NUM]]</tspan><tspan class="bp" dy="-6">%</tspan></text>
                     <rect x="132" y="152" width="8" height="8" fill="#7A2D10"/>
@@ -340,27 +325,22 @@
                         <tspan x="144" dy="13">[[P4_H4_DESC3]]</tspan>
                     </text>
 
-                    <!-- Bar 5 -->
                     <rect x="15" y="184" width="55" height="30" rx="2" fill="#4A2C1A"/>
                     <text class="sf"><tspan x="22" y="204" class="bn">[[P4_H5_NUM]]</tspan><tspan class="bp" dy="-6">%</tspan></text>
                     <rect x="15" y="223" width="8" height="8" fill="#4A2C1A"/>
                     <text class="sf dt">
                         <tspan x="27" y="231">[[P4_H5_DESC1]]</tspan>
-                        <!-- Desc2 and Desc3 may be empty; kept for consistency -->
                         <tspan x="27" dy="13">[[P4_H5_DESC2]]</tspan>
                         <tspan x="27" dy="13">[[P4_H5_DESC3]]</tspan>
                     </text>
                 </svg>
             </div>
 
-            <!-- Body paragraph -->
             <p class="body-p">[[P4_BODY1]]</p>
 
             <hr class="rule"/>
-            <!-- Second question -->
             <p class="q-line"><strong>Question:</strong> [[P4_Q2]]</p>
 
-            <!-- CHART 2 — Grouped bars -->
             <div class="chart-wrap">
                 <svg viewBox="0 0 530 212" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -372,7 +352,6 @@
                             .ltxt { font-size: 10.5px; fill: #2b1a0c; }
                         </style>
                     </defs>
-                    <!-- Legend -->
                     <circle cx="15" cy="22" r="5" fill="#6B3F1F"/>
                     <text class="sf2 ltxt">
                         <tspan x="25" y="19">[[P4_LEG1_L1]]</tspan>
@@ -386,7 +365,6 @@
 
                     <line x1="70" y1="176" x2="510" y2="176" stroke="#d6c0a8" stroke-width="0.8"/>
 
-                    <!-- Group 1: Very confident -->
                     <rect x="74" y="147" width="24" height="29" fill="#6B3F1F"/>
                     <rect x="100" y="144" width="24" height="32" fill="#C4623A"/>
                     <text class="sf2 pout" x="86"><tspan y="142">[[P4_G1_DARK]]%</tspan></text>
@@ -396,7 +374,6 @@
                         <tspan x="99" dy="11">[[P4_G1_L2]]</tspan>
                     </text>
 
-                    <!-- Group 2: Somewhat confident -->
                     <rect x="162" y="20" width="24" height="156" fill="#6B3F1F"/>
                     <rect x="188" y="11" width="24" height="165" fill="#C4623A"/>
                     <text class="sf2 pin" x="174"><tspan y="33">[[P4_G2_DARK]]%</tspan></text>
@@ -406,7 +383,6 @@
                         <tspan x="187" dy="11">[[P4_G2_L2]]</tspan>
                     </text>
 
-                    <!-- Group 3: Not very confident -->
                     <rect x="250" y="114" width="24" height="62" fill="#6B3F1F"/>
                     <rect x="276" y="108" width="24" height="68" fill="#C4623A"/>
                     <text class="sf2 pin" x="262"><tspan y="127">[[P4_G3_DARK]]%</tspan></text>
@@ -416,7 +392,6 @@
                         <tspan x="275" dy="11">[[P4_G3_L2]]</tspan>
                     </text>
 
-                    <!-- Group 4: Not at all confident -->
                     <rect x="338" y="161" width="24" height="15" fill="#6B3F1F"/>
                     <rect x="364" y="155" width="24" height="21" fill="#C4623A"/>
                     <text class="sf2 pout" x="350"><tspan y="156">[[P4_G4_DARK]]%</tspan></text>
@@ -426,20 +401,17 @@
                         <tspan x="363" dy="11">[[P4_G4_L2]]</tspan>
                     </text>
 
-                    <!-- Group 5: Not sure -->
                     <rect x="426" y="155" width="24" height="21" fill="#6B3F1F"/>
                     <rect x="452" y="155" width="24" height="21" fill="#C4623A"/>
                     <text class="sf2 pout" x="438"><tspan y="150">[[P4_G5_DARK]]%</tspan></text>
                     <text class="sf2 pout" x="464"><tspan y="150">[[P4_G5_LIGHT]]%</tspan></text>
                     <text class="sf2 xlbl" x="451">
                         <tspan y="190">[[P4_G5_L1]]</tspan>
-                        <!-- G5_L2 is usually empty, but placeholder kept -->
                         <tspan x="451" dy="11">[[P4_G5_L2]]</tspan>
                     </text>
                 </svg>
             </div>
 
-            <!-- footer -->
             <div class="page-footer">
                 <div class="footer-logo">
                     <div class="footer-triangle"></div>
